@@ -36,12 +36,26 @@ class App extends Component {
     .then(response => console.log(response))
     .catch(error => console.log(error))
   }
+  updating = (name, age, email, id) => {
+        console.log(name, age, email, id);
+        axios.put(`http://localhost:5000/friends/${id}`, {
+        name: name,
+        age: age,
+        email: email,
+    })
+    .then(response => {
+        console.log(response);
+    })
+    .catch(error => {
+        console.log(error);
+    });
+    }
 
   render() {
     return (
       <div>
         {
-          this.state.friends.map(friend => <Friend friend={friend} />)
+          this.state.friends.map(friend => <Friend friend={friend} key={friend.id} updating={this.updating} />)
         }
         <Addform addNewFriend={this.addNewFriend}/>
       </div>
