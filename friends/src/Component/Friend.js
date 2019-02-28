@@ -1,11 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { Route } from 'react-router-dom';
+import StyledFriend from './styleComponents/StyledFriend';
 
 export default class Friend extends React.Component {
     state = {
         updatingFriend: false,
-        updateName: '',
-        updateAge: '',
-        updateEmail: '',
+        updateName: this.props.friend.name,
+        updateAge: this.props.friend.age,
+        updateEmail: this.props.friend.age,
     }
 
     updateFriend = event => {
@@ -25,7 +28,7 @@ export default class Friend extends React.Component {
 
     render() {
         return (
-            <div>
+            <StyledFriend>
                 <p>Name: {this.props.friend.name}</p>
                 <p>Age: {this.props.friend.age}</p>
                 <p>email: {this.props.friend.email}</p>
@@ -38,7 +41,7 @@ export default class Friend extends React.Component {
                         this.state.updatingFriend &&
                         <button onClick={this.startUpdating}>Stop Update</button>
                     }
-                    <button>Delete</button>
+                    <button onClick={() => this.props.deleteFriend(this.props.friend.id)}>Delete</button>
                 </div>
                 {
                     this.state.updatingFriend && 
@@ -49,7 +52,7 @@ export default class Friend extends React.Component {
                         <button onClick={() => this.props.updating(this.state.updateName, this.state.updateAge, this.state.updateEmail, this.props.friend.id)}>Push Update</button>
                     </form>
                 }
-            </div>
+            </StyledFriend>
         )
     }
 }
