@@ -60,7 +60,6 @@ class App extends Component {
       axios.delete(`http://localhost:5000/friends/${id}`)
       .then(res => console.log(res))
       .catch(this.setError);
-      this.componentDidMount();
     }
 
   render() {

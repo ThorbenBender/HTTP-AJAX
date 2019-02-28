@@ -8,7 +8,7 @@ export default class Friend extends React.Component {
         updatingFriend: false,
         updateName: this.props.friend.name,
         updateAge: this.props.friend.age,
-        updateEmail: this.props.friend.age,
+        updateEmail: this.props.friend.email,
     }
 
     updateFriend = event => {
